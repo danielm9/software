@@ -54,11 +54,9 @@ matrix:
 # Configuration variables. All variables are global now, but this can be used to
 # trigger a build matrix for different ROS distributions if desired.
 env:
-  ignore:
-    - polaris
   global:
     - ROS_CI_DESKTOP="`lsb_release -cs`"  # e.g. [trusty|xenial|...]
-    - CI_SOURCE_PATH=trident
+    - CI_SOURCE_PATH=$(pwd)
     - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
     - CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
     - ROS_PARALLEL_JOBS='-j8 -l6'
@@ -67,6 +65,7 @@ env:
 
 # Install system dependencies, namely a very barebones ROS setup.
 before_install:
+  - ls
   - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
   - sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
   - sudo apt-get update -qq
@@ -77,6 +76,7 @@ before_install:
   - sudo apt-get install python3-rosdep
   - sudo rosdep init
   - rosdep update
+  - ls
 
 # Create a catkin workspace with the package under integration.
 install:
