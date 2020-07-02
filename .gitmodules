@@ -1,5 +1,5 @@
-[submodule "continuous_integration"]
-	path = continuous_integration
+[submodule "tutorials/continuous_integration"]
+	path = tutorials/continuous_integration
 	url = https://github.com/felixduvallet/ros-travis-integration.git
 
 # submodule "path" where path is acutal path within repo where submodule will be
