@@ -2,16 +2,16 @@
 	path = continuous_integration
 	url = https://github.com/felixduvallet/ros-travis-integration.git
 
-[submodule "$(pwd)/trident/src/darknet_ros"]
-	path = $(pwd)/trident/src/darknet_ros
+[submodule "trident/src/darknet_ros"]
+	path = trident/src/darknet_ros
 	url = https://github.com/leggedrobotics/darknet_ros.git
 
-[submodule "$(pwd)/trident/src/darknet_ros/darknet"]
-	path = $(pwd)/trident/src/darknet_ros
+[submodule "trident/src/darknet_ros/darknet"]
+	path = trident/src/darknet_ros
 	url = https://github.com/pjreddie/darknet
 
-[submodule "$(pwd)/trident/src/openai_ros"]
-	path = $(pwd)/trident/src/openai_ros
+[submodule "trident/src/openai_ros"]
+	path = trident/src/openai_ros
 	url = https://bitbucket.org/theconstructcore/openai_ros.git
 
 # submodule "path" where path is acutal path within repo where submodule will be
