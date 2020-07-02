@@ -60,7 +60,6 @@ env:
     - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
     - CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
     - PACKAGE_PATH=auvic_tests
-    - ROS_PARALLEL_JOBS='-j8 -l6'
     
 ################################################################################
 
