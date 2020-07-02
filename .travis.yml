@@ -80,8 +80,8 @@ before_install:
 # Go into trident and run the system
 install:
   # first install roslint
-  - sudo apt-get install ros-$ROS_DISTRO_roslint
-  - sudo apt-get install ros-$ROS_DISTRO_rostest
+  - sudo apt-get install ros-noetic-roslint
+  - sudo apt-get install ros-noetic-rostest
   - cd trident
   - catkin_make
   - source devel/setup.bash
