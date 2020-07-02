@@ -1,0 +1,3 @@
+[submodule "continuous_integration"]
+	path = continuous_integration
+	url = https://github.com/felixduvallet/ros-travis-integration.git

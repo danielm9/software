@@ -98,7 +98,7 @@ void Can_Manager::Make_Can_msg(GetMonitorReq& input, can_msgs::Frame& output){
     output.is_error = false;
     // data length code: set it to max for now, and in the future update, have the services define the frame length.
     /// max = 8 bytes
-    output.dlc = 0xFF;
+    output.dlc = 8;
     // ... sigh... okay lets make another list....
     /// frick. I dont want to. - Aman
     output.data = {0x6e, 0x6f, 0x70, 0x65, 0x21, 0x00, 0x00, 0x00};

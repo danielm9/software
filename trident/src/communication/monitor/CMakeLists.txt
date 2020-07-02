@@ -29,7 +29,6 @@ include_directories(
    ${catkin_INCLUDE_DIRS}
 )
 
-
 # can_manager
 add_library(can_manager src/can_manager.cpp)
 add_dependencies(can_manager ${catkin_EXPORTED_TARGETS})
@@ -54,3 +53,32 @@ install(
     include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  find_package(roslint REQUIRED)
+
+  roslint_cpp()
+  roslint_add_test()
+
+  # unit test for the from_can function and auvic_msgs/devices_to_monitor srv.
+  catkin_add_gtest(test_receiving test/test_receiving.cpp)
+  target_link_libraries(test_receiving can_manager ${catkin_LIBRARIES})
+
+  # unit test for the to_can function.
+  catkin_add_gtest(test_sending test/test_sending.cpp)
+  target_link_libraries(test_sending can_manager ${catkin_LIBRARIES})
+
+  add_rostest_gtest(test_from_can_manager
+    test/from_can_manager.test
+    test/from_can_manager_test.cpp
+  )
+  target_link_libraries(test_from_can_manager can_manager ${catkin_LIBRARIES})
+
+  add_rostest_gtest(test_to_can_manager
+    test/to_can_manager.test
+    test/to_can_manager_test.cpp
+  )
+  target_link_libraries(test_to_can_manager can_manager ${catkin_LIBRARIES})
+
+endif()

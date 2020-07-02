@@ -1,0 +1,16 @@
+<launch>
+    <!-- 
+        This launchfile expectes one virtual can interface, vcan0. 
+        It sends messages to the 'tocan' topic to be sent to the bus. 
+        with can-utils tools you can then use:
+            candump vcan0
+
+        to showdata from the bus
+    -->
+  <node name="socketcan_bridge_node" pkg="socketcan_bridge" type="socketcan_bridge_node" output="screen" required="true">
+    <param name="can_device" value="vcan0"/>
+  </node>
+  <node name="can_manager_node" pkg="monitor" type="can_manager_node" required="true">
+  </node>
+
+</launch>
