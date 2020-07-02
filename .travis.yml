@@ -77,8 +77,11 @@ before_install:
   - sudo rosdep init
   - rosdep update
 
-# Create a catkin workspace with the package under integration.
+# Go into trident and run the system
 install:
+  # first install roslint
+  - sudo apt-get install ros-$ROS_DISTRO_roslint
+  - sudo apt-get install ros-$ROS_DISTRO_rostest
   - cd trident
   - catkin_make
   - source devel/setup.bash
