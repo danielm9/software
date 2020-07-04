@@ -3,7 +3,7 @@
 #define DEVICE_MANAGER_HPP
 
 //C++ library
-#include <vector>
+#include <list>
 #include <exception>
 #include <algorithm>
 #include <string>
@@ -19,6 +19,8 @@
 //auvic library
 #include "protocol.h"
 #include "auvic_msgs/devices_to_monitor.h"
+#include "auvic_msgs/protocol_MID_E.h"
+#include "auvic_msgs/protocol_allMessages_U.h"
 
 using GetMonitorReq = auvic_msgs::devices_to_monitor::Request;
 using GetMonitorRes = auvic_msgs::devices_to_monitor::Response;
@@ -58,7 +60,9 @@ class Can_Manager{
         ros::Publisher Peripheral_grabber;
         ros::Publisher Peripheral_dropper;
         ros::Publisher Peripheral_hydrophone;
-        
+
+        auvic_msgs::protocol_MID_E protocol_messageID;
+        auvic_msgs::protocol_allMessages_U protocol_message;
 };
 
 

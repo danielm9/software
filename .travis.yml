@@ -78,7 +78,7 @@ before_install:
   - sudo rosdep init
   - rosdep update
   # Install socketCAN
-  - sudo apt-get install canutils
+  - sudo apt-get install can-utils
   - sudo modprobe can
   - sudo modprobe vcan
   - sudo modprobe slcan

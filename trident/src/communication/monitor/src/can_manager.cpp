@@ -23,7 +23,10 @@ Can_Manager::Can_Manager(ros::NodeHandle* n_auvic, ros::NodeHandle* n_socketcan)
         this->Peripheral_imu = n_auvic->advertise<can_msgs::Frame>("inertia", 10);
         this->Peripheral_grabber = n_auvic->advertise<can_msgs::Frame>("limb", 10); 
         this->Peripheral_dropper = n_auvic->advertise<can_msgs::Frame>("SRweapon", 10);
-        this->Peripheral_hydrophone = n_auvic->advertise<can_msgs::Frame>("acoustics", 10);   
+        this->Peripheral_hydrophone = n_auvic->advertise<can_msgs::Frame>("acoustics", 10);
+
+        // this->protocol_messageID = 
+        // this->protocol_message = 
 }
 
 void Can_Manager::message_handle(ros::Publisher Peripheral_topic_handle, std::string topic, can_msgs::Frame msg){
@@ -48,29 +51,29 @@ void Can_Manager::From_Can(const can_msgs::Frame::ConstPtr& msg){
 
     // lookup the message
     /// add messages by modifying protocol.hpp 
-    switch(messageID){
-        case protocol_MID_MC_deviceName:
-            this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
-            break;
-        case protocol_MID_MC_motorRPMLow:
-            this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
-            break;
-        case protocol_MID_MC_motorRPMHigh:
-            this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
-            break;
-        case protocol_MID_PB_deviceName:
-            this->message_handle(this->Peripheral_powerboard, "power", *msg);
-            break;
-        case protocol_MID_PB_envData: // Environmental Data
-            this->message_handle(this->Peripheral_powerboard, "power", *msg);
-            break;
-        case protocol_MID_PB_battVoltages:
-            this->message_handle(this->Peripheral_powerboard, "power", *msg);
-            break;
-        case protocol_MID_PB_battCurrents:
-            this->message_handle(this->Peripheral_powerboard, "power", *msg);
-            break;
-    }
+    // switch(messageID){
+    //     case protocol_MID_MC_deviceName:
+    //         this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
+    //         break;
+    //     case protocol_MID_MC_motorRPMLow:
+    //         this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
+    //         break;
+    //     case protocol_MID_MC_motorRPMHigh:
+    //         this->message_handle(this->Peripheral_motorcontroller, "motors", *msg);
+    //         break;
+    //     case protocol_MID_PB_deviceName:
+    //         this->message_handle(this->Peripheral_powerboard, "power", *msg);
+    //         break;
+    //     case protocol_MID_PB_envData: // Environmental Data
+    //         this->message_handle(this->Peripheral_powerboard, "power", *msg);
+    //         break;
+    //     case protocol_MID_PB_battVoltages:
+    //         this->message_handle(this->Peripheral_powerboard, "power", *msg);
+    //         break;
+    //     case protocol_MID_PB_battCurrents:
+    //         this->message_handle(this->Peripheral_powerboard, "power", *msg);
+    //         break;
+    // }
     // end callback
 }  
 
